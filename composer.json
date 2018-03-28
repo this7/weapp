@@ -1,0 +1,29 @@
+{
+    "name": "this7/weapp",
+    "description": "this7 PHP weapp class.",
+    "license": "MIT",
+    "homepage": "https://github.com/this7/weapp",
+    "keywords": [
+        "this7",
+        "php-weapp"
+    ],
+    "authors": [
+    {
+        "name": "Yan Tianzeng",
+        "email": "qinuoyun@qq.com",
+        "homepage": "http://www.ub-u7.com/"
+    }],
+    "require":
+    {
+        "php": ">=5.6.6",
+        "this7/config": "dev-master",
+        "this7/logger": "dev-master"
+    },
+    "autoload":
+    {
+        "psr-4":
+        {
+            "this7\\weapp\\": "src"
+        }
+    }
+}
