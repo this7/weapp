@@ -1,0 +1,47 @@
+{
+    "defer":
+    {
+        "name": "延时加载",
+        "value": false
+    },
+    "wxLoginExpires":
+    {
+        "name": "登录周期",
+        "value": 7200
+    },
+    "wxMessageToken":
+    {
+        "name": "登录Token",
+        "value": "abcdefgh"
+    },
+    "rootPath":
+    {
+        "name": "根目录",
+        "value": "cAuth"
+    },
+    "appId":
+    {
+        "name": "微信小程序 AppID",
+        "value": "abcdefgh"
+    },
+    "appSecret":
+    {
+        "name": "微信小程序 AppSecret",
+        "value": "abcdefgh"
+    },
+    "useQcloudLogin":
+    {
+        "name": "使用腾讯云代理登录",
+        "value": true
+    },
+    "versions":
+    {
+        "name": "版本号",
+        "value": "1.0"
+    },
+    "cSessionInfo":
+    {
+        "name": "用户缓存表",
+        "value": "cSessionInfo"
+    }
+}
