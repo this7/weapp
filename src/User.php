@@ -4,7 +4,7 @@
  * @E-mail: admin@ubphp.com
  * @Date:   2016-08-26 15:05:16
  * @Last Modified by:   qinuoyun
- * @Last Modified time: 2018-03-29 10:24:22
+ * @Last Modified time: 2018-03-29 14:47:33
  * Copyright (c) 2014-2016, UBPHP All Rights Reserved.
  */
 namespace this7\weapp;
@@ -17,18 +17,18 @@ class User {
         $open_id         = $userinfo->openId;
         $user_info       = json_encode($userinfo);
         $cSessionInfo    = sql::table(C("weapp", "cSessionInfo"));
-        $res             = $cSessionInfo->where("open_id", $open_id)->first()
-        if ($res === NULL) {
-            $cSessionInfo->insert(compact('uuid', 'skey', 'create_time', 'last_visit_time', 'open_id', 'session_key', 'user_info'));
-        } else {
+        $res             = $cSessionInfo->where("open_id", $open_id)->first();
+        if ($res) {
             $cSessionInfo->where("open_id", $open_id)
                 ->update(compact('uuid', 'skey', 'last_visit_time', 'session_key', 'user_info'));
+        } else {
+            $cSessionInfo->insert(compact('uuid', 'skey', 'create_time', 'last_visit_time', 'open_id', 'session_key', 'user_info'));
+
         }
     }
 
     public static function findUserBySKey($skey) {
         $row = sql::table(C("weapp", "cSessionInfo"))->where("skey", $skey)->first();
-
         return (object) $row;
     }
 }

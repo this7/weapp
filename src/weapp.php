@@ -4,7 +4,7 @@
  * @E-mail: admin@ubphp.com
  * @Date:   2016-08-26 15:05:16
  * @Last Modified by:   qinuoyun
- * @Last Modified time: 2018-03-29 10:15:44
+ * @Last Modified time: 2018-03-29 13:01:39
  * Copyright (c) 2014-2016, UBPHP All Rights Reserved.
  */
 namespace this7\weapp;
@@ -12,7 +12,47 @@ use \Exception as Exception;
 
 class weapp {
     public function __construct() {
-        Conf::setup(C("weapp"));
+        // 系统判断
+        if (PHP_OS === 'WINNT') {
+            $sdkConfigPath = 'C:\qcloud\sdk.config';
+        } else {
+            $sdkConfigPath = '/data/release/sdk.config.json';
+        }
+
+        $sdkConfig = [];
+
+        if (file_exists($sdkConfigPath)) {
+            $sdkConfig = json_decode(file_get_contents($sdkConfigPath), true);
+        }
+
+        if (!is_array($sdkConfig)) {
+            echo "SDK 配置文件（{$sdkConfigPath}）内容不合法";
+            die;
+        }
+
+        // 合并 sdk config 和原来的配置
+        $config = array_merge($sdkConfig, C("weapp"));
+
+        /**
+         * --------------------------------------------------------------------
+         * 设置 SDK 基本配置
+         * --------------------------------------------------------------------
+         */
+        Conf::setup($config);
+
+        /**
+         * --------------------------------------------------------------------
+         * 设置 SDK 日志输出配置（主要是方便调试）
+         * --------------------------------------------------------------------
+         */
+
+        // 开启日志输出功能
+        Conf::setEnableOutputLog(true);
+
+        // 设置日志输出级别
+        // 1 => ERROR, 2 => DEBUG, 3 => INFO, 4 => ALL
+        Conf::setLogThresholdArray([2]); // output debug log only
+
     }
 
     /**
