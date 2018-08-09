@@ -22,17 +22,17 @@
     "appId":
     {
         "name": "微信小程序 AppID",
-        "value": "abcdefgh"
+        "value": "wxe1ae4b35bcd438a2"
     },
     "appSecret":
     {
         "name": "微信小程序 AppSecret",
-        "value": "abcdefgh"
+        "value": "3ef5b22ddb20c779d98cc27892a676a3"
     },
     "useQcloudLogin":
     {
         "name": "使用腾讯云代理登录",
-        "value": true
+        "value": false
     },
     "versions":
     {
